@@ -2,22 +2,23 @@
 
 /**
  * _memset -  function fills the first n bytes of the memory area pointed to by s with the constant byte b.
- * @s: buffer.
- * @b: simple_print_buffer.
- * @n: memset.
+ * @s: buffer array.
+ * @b: constant byte.
+ * @n: number of bytes.
  * Return: s.
  */
 
 char *_memset(char *s, char b, unsigned int n)
 {
-	unsigned int i;
+	int i;
 
 	i = 0;
 
-	while (i < n)
+	while (n > 0)
 	{
 		s[i] = b;
 		i++;
+		n--;
 	}
 	return (s);
 }
