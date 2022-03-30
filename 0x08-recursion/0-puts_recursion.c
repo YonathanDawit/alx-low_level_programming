@@ -1,4 +1,4 @@
-#include "holberton.h"
+#include "main.h"
 
 /**
  * _puts_recursion - Print a string
@@ -14,4 +14,5 @@ void _puts_recursion(char *s)
 		_putchar(*s);
 		_puts_recursion(++s);
 	}
-}[A[A[A[A[A[A[A[A[A[A[A[A[A[A[A[A[C[C[C[C[C[C[C[C[C[3~[3~[3~[C[C[C[C[C[C[C[C[C[C[C[C[C[Cmain.h"[B[B[B[B[B[B[B[B[B[B[B[B[B[B[B[B[B[D[D[D[D[D[D[D[D[D[D[D[D[D[D[D[D
+}
+
