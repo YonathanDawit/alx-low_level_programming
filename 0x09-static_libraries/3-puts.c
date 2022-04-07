@@ -1,19 +1,11 @@
 #include "main.h"
-
+#include <stdio.h>
 /**
- * _puts - function that prints a string, followed by a new line, to stdout
- *
- * @str: parameter defined in main
- *
- * Return: void
+ * Description: main - Prints out a string to stdout.
+ * Return: 0 if success.
  */
-
-void _puts(char *str)
+int main(void)
 {
-	while (*str != '\0')
-	{
-		_putchar(*str);
-		str++;
-	}
-	_putchar('\n');
+puts("\"Programming is like building a multilingual puzzle");
+return (0);
 }
