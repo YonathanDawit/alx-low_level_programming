@@ -1,39 +1,69 @@
-#include "main.h"
+#include <stdlib.h>
+
+char *_memcpy(char *dest, char *src, unsigned int n);
 
 /**
- * _realloc - reallocates a memory block
- * @ptr: pointer to previous memory block
- * @old_size: size in bytes of allocated space for `ptr`
- * @new_size: size in bytes for new allocated space
- * Return: Pointer to new memory block, or NULL if error
+ * _realloc - allocates memory block using malloc and free
+ * @ptr: pointer to the memory previosly allocated with malloc
+ * @old_size: The size of the allocated space of ptr
+ * @new_size: The new size to allocate
+ *
+ * Description: allocates a new memory block for the pointer,
+ * using the contents from the original pointer, copiyng up to the
+ * minimum of the old and new sizes.
+ * If new_size > old_size, the added memory should not be intialized
+ * If new_size == old_size, returns the same pointer
+ * If ptr == NULL, call is equivalent to malloc(new_size)
+ * If new_size == 0 and ptr != NULL, call is equivalent to free(ptr),
+ *  and return NULL.
+ *
+ * Return: A pointer to the new allocated memory and free ptr.
+ * NULL if can not allocate memory
  */
-
 void *_realloc(void *ptr, unsigned int old_size, unsigned int new_size)
 {
-	char *p, *copy;
-	unsigned int i;
+	char *p;
 
 	if (new_size == old_size)
 		return (ptr);
-	if (ptr != NULL && new_size == 0)
+
+	if (new_size == 0 && ptr != NULL)
 	{
 		free(ptr);
 		return (NULL);
 	}
-	if (ptr == NULL)
-	{
-		p = malloc(new_size);
-		if (p == NULL)
-			return (NULL);
-		return (p);
-	}
 
 	p = malloc(new_size);
+
 	if (p == NULL)
 		return (NULL);
-	copy = ptr;
-	for (i = 0; i < old_size; i++)
-		p[i] = copy[i];
+
+	if (ptr == NULL)
+		return (p);
+
+	p = _memcpy(p, ptr, (new_size > old_size ? old_size : new_size));
 	free(ptr);
 	return (p);
+}
+
+/**
+ * _memcpy - copies the memory are from
+ * src to dest
+ * @dest: The destination pointer
+ * @src: The source pointer
+ * @n: bytes to use from src
+ *
+ * Return: The pointer to dest
+ */
+char *_memcpy(char *dest, char *src, unsigned int n)
+{
+	unsigned int i = 0;
+
+	while (i < n)
+	{
+		*(dest + i) = *(src + i);
+		i++;
+	}
+
+	return (dest);
 }
